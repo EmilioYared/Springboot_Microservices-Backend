@@ -1,0 +1,22 @@
+package com.emilio.bookingservice.client;
+
+
+import com.emilio.bookingservice.response.InventoryResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+//this will be used to call the inventoryservice
+@Service
+public class InventoryServiceClient {
+
+    @Value("${inventory.service.url}")
+    private String inventoryServiceUrl;
+
+    public InventoryResponse getInventory(final Long eventId)
+    {
+        final RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(inventoryServiceUrl + "/event/" + eventId, InventoryResponse.class);
+    }
+}
