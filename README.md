@@ -27,10 +27,8 @@ It demonstrates a modern architecture with **authentication, inter-service commu
 
 ```
 # Start MySQL, Keycloak, Kafka, and Zookeeper
+# this is inside inventoryservice
 docker-compose up -d
 
-mvn spring-boot:run -pl api-gateway
-mvn spring-boot:run -pl booking-service
-mvn spring-boot:run -pl inventory-service
-mvn spring-boot:run -pl order-service
+# run each service simultanously
 ```
